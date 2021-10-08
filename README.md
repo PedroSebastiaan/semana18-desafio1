@@ -1,24 +1,16 @@
-# README
+Example
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+class Animal < ApplicationController
+    # ...
+    def create
+    # ...
+        kind = params[:animal][:kind]
+        if kind == "Dog":
+            animal = Dog.new(animal_params)
+        elsif kind == "Cat"
+            animal = Cat.new(animal_params)
+        else
+            animal = Cow.new(animal_params)
+        end
+    end
+end
