@@ -1,2 +1,0 @@
-class Paypal < ApplicationRecord
-end

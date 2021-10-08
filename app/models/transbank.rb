@@ -1,2 +1,0 @@
-class Transbank < ApplicationRecord
-end
