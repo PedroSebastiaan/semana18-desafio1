@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_08_185152) do
+ActiveRecord::Schema.define(version: 2021_10_08_190124) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,21 +52,15 @@ ActiveRecord::Schema.define(version: 2021_10_08_185152) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.integer "payment_id"
+    t.index ["payment_id"], name: "index_orders_on_payment_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "order_id"
-    t.index ["order_id"], name: "index_payments_on_order_id"
-    t.index ["user_id"], name: "index_payments_on_user_id"
-  end
-
-  create_table "paypals", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "phisicals", force: :cascade do |t|
@@ -89,14 +83,13 @@ ActiveRecord::Schema.define(version: 2021_10_08_185152) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "stripes", force: :cascade do |t|
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.string "typeable_type"
+    t.integer "typeable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "transbanks", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["typeable_type", "typeable_id"], name: "index_types_on_typeable_type_and_typeable_id"
   end
 
   create_table "users", force: :cascade do |t|
